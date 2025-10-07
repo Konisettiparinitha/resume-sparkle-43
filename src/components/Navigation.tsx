@@ -30,33 +30,33 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg border-b border-border shadow-lg"
+          ? "glass-effect border-b border-white/5"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
-            className="text-xl md:text-2xl font-bold text-gradient hover:scale-105 transition-transform"
+            className="text-2xl font-light tracking-widest hover:text-primary transition-colors"
           >
-            Parinitha
+            KP
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center space-x-12">
             {navItems.map((item) => (
-              <Button
+              <button
                 key={item.id}
-                variant="ghost"
                 onClick={() => scrollToSection(item.id)}
-                className="text-foreground/80 hover:text-primary hover:bg-primary/10"
+                className="text-sm font-light tracking-wide text-muted-foreground hover:text-primary transition-colors duration-300 relative group"
               >
                 {item.label}
-              </Button>
+                <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+              </button>
             ))}
           </div>
 

@@ -30,73 +30,60 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-20 px-4">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center space-y-4 mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            <span className="text-gradient">Education</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto rounded-full" />
-        </div>
+    <section id="education" className="py-32 relative overflow-hidden bg-background">
+      {/* Background blur orbs */}
+      <div className="absolute bottom-1/4 right-1/3 w-[600px] h-[600px] bg-secondary/30 blur-orb animate-glow-pulse" style={{ animationDelay: "2s" }} />
+      
+      <div className="container mx-auto px-4">
+        <div className="max-w-5xl mx-auto space-y-20 animate-fade-in">
+          <div className="space-y-6">
+            <h2 className="text-5xl md:text-7xl font-light tracking-tight">EDUCATION</h2>
+            <div className="h-px w-32 bg-primary" />
+          </div>
 
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary-glow to-primary" />
-
-          <div className="space-y-12">
+          <div className="space-y-16">
             {education.map((edu, index) => (
-              <div
-                key={index}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                } animate-fade-in`}
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-primary rounded-full transform -translate-x-1/2 animate-glow z-10" />
-
-                {/* Content card */}
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? "md:pr-12 pl-16 md:pl-0" : "md:pl-12 pl-16 md:pr-0"}`}>
-                  <Card className="bg-card/50 backdrop-blur border-primary/20 hover:border-primary/50 transition-all hover:glow-effect group">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-3 mb-4">
-                        <div className="p-2 rounded-lg bg-primary/20 group-hover:scale-110 transition-transform">
-                          <GraduationCap className="h-5 w-5 text-primary" />
-                        </div>
-                        <div className="flex-1">
-                          {edu.status === "pursuing" && (
-                            <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-primary/20 text-primary mb-2">
-                              Currently Pursuing
-                            </span>
-                          )}
-                          <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
-                          {edu.specialization && (
-                            <p className="text-sm text-primary mb-2">{edu.specialization}</p>
-                          )}
-                          <p className="font-semibold text-foreground/90">{edu.institution}</p>
-                        </div>
-                      </div>
-
-                      <div className="space-y-2 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-primary" />
-                          <span>{edu.location}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-primary" />
-                          <span>{edu.duration}</span>
-                        </div>
-                        {edu.achievement && (
-                          <div className="mt-3 pt-3 border-t border-border">
-                            <span className="font-semibold text-primary">Achievement: </span>
-                            <span className="text-foreground">{edu.achievement}</span>
-                          </div>
+              <Card key={index} className="glass-effect p-12 border-0 hover:bg-white/5 transition-all duration-500 group">
+                <div className="flex items-start gap-8">
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="w-16 h-16 glass-effect flex items-center justify-center text-2xl font-light text-primary group-hover:scale-110 transition-transform duration-500">
+                      0{index + 1}
+                    </div>
+                    {index < education.length - 1 && (
+                      <div className="h-24 w-px bg-gradient-to-b from-primary/50 to-transparent" />
+                    )}
+                  </div>
+                  <div className="flex-1 space-y-4 pt-4">
+                    <div className="flex items-start justify-between flex-wrap gap-4">
+                      <div className="space-y-2">
+                        {edu.status === "pursuing" && (
+                          <span className="inline-block px-4 py-1 text-xs font-light tracking-wider glass-effect text-primary mb-2">
+                            CURRENTLY PURSUING
+                          </span>
                         )}
+                        <h3 className="text-3xl font-light tracking-wide">{edu.degree}</h3>
+                        {edu.specialization && (
+                          <p className="text-lg text-primary/80 font-light">{edu.specialization}</p>
+                        )}
+                        <p className="text-lg text-muted-foreground/70 font-light">{edu.institution}</p>
                       </div>
-                    </CardContent>
-                  </Card>
+                      <span className="glass-effect text-sm font-light tracking-wide px-4 py-2">{edu.duration}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-8 text-sm text-muted-foreground/70 font-light">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4" />
+                        <span>{edu.location}</span>
+                      </div>
+                      {edu.achievement && (
+                        <div className="flex items-center gap-2">
+                          <span className="text-primary">Achievement:</span>
+                          <span>{edu.achievement}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Card>
             ))}
           </div>
         </div>

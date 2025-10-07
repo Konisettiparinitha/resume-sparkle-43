@@ -8,42 +8,46 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 0%;
     --foreground: 0 0% 98%;
 
-    --card: 240 10% 5%;
+    --card: 0 0% 5%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 240 10% 5%;
+    --popover: 0 0% 5%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 263 70% 50%;
+    --primary: 207 90% 54%;
     --primary-foreground: 0 0% 100%;
-    --primary-glow: 270 80% 60%;
+    --primary-glow: 207 90% 64%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 30 100% 65%;
+    --secondary-foreground: 0 0% 10%;
 
-    --muted: 240 5% 26%;
-    --muted-foreground: 240 5% 65%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 217 33% 17%;
+    --accent: 207 90% 54%;
     --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 10% 15%;
-    --input: 240 10% 15%;
-    --ring: 263 70% 50%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 207 90% 54%;
 
-    --radius: 0.75rem;
+    --radius: 0rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(263 70% 50%), hsl(217 70% 50%));
-    --gradient-hero: linear-gradient(135deg, hsl(263 70% 50% / 0.1), hsl(217 70% 50% / 0.1));
-    --glow-primary: 0 0 40px hsl(263 70% 50% / 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Custom design tokens - Elegant blur gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(207 90% 54%), hsl(30 100% 65%));
+    --gradient-blur-1: radial-gradient(circle at 30% 40%, hsl(207 90% 40% / 0.4) 0%, transparent 50%);
+    --gradient-blur-2: radial-gradient(circle at 70% 60%, hsl(30 100% 50% / 0.3) 0%, transparent 50%);
+    --gradient-hero: radial-gradient(ellipse at top left, hsl(207 90% 40% / 0.3), transparent 50%),
+                     radial-gradient(ellipse at bottom right, hsl(30 100% 50% / 0.25), transparent 50%);
+    --glow-primary: 0 0 60px hsl(207 90% 54% / 0.4), 0 0 120px hsl(30 100% 65% / 0.2);
+    --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
 }
 
@@ -74,24 +78,47 @@ All colors MUST be HSL.
     box-shadow: var(--glow-primary);
   }
 
+  .blur-orb {
+    filter: blur(100px);
+    opacity: 0.6;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
   .animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 
   .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeIn 0.8s ease-out forwards;
   }
 
   .animate-slide-in-left {
-    animation: slideInLeft 0.6s ease-out forwards;
+    animation: slideInLeft 0.8s ease-out forwards;
   }
 
   .animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out forwards;
+    animation: slideInRight 0.8s ease-out forwards;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.5s ease-out forwards;
+    animation: scaleIn 0.7s ease-out forwards;
+  }
+
+  .animate-float-slow {
+    animation: floatSlow 6s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glowPulse 3s ease-in-out infinite;
+  }
+
+  .animate-reveal {
+    animation: reveal 1s ease-out forwards;
   }
 }
 
@@ -145,5 +172,41 @@ All colors MUST be HSL.
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.6;
+    filter: blur(100px);
+  }
+  50% {
+    opacity: 0.8;
+    filter: blur(120px);
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
   }
 }

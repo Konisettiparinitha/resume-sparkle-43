@@ -31,94 +31,84 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4">
-      <div className="container mx-auto max-w-4xl">
-        <div className="text-center space-y-4 mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Get In <span className="text-gradient">Touch</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto rounded-full" />
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            I'm always open to new opportunities and collaborations. 
-            Feel free to reach out!
-          </p>
-        </div>
+    <section id="contact" className="py-32 relative overflow-hidden bg-background">
+      {/* Background blur orbs */}
+      <div className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-secondary/30 blur-orb animate-glow-pulse" />
+      
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto space-y-20 animate-fade-in">
+          <div className="space-y-6">
+            <h2 className="text-5xl md:text-7xl font-light tracking-tight">CONTACT</h2>
+            <div className="h-px w-32 bg-primary" />
+            <p className="text-lg text-muted-foreground/70 font-light max-w-2xl">
+              I'm always open to new opportunities and collaborations. 
+              Feel free to reach out!
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 gap-6 animate-fade-in">
-          {contactInfo.map((contact, index) => (
-            <Card
-              key={contact.label}
-              className="bg-card/50 backdrop-blur border-primary/20 hover:border-primary/50 transition-all hover:scale-105 group animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardContent className="p-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            {contactInfo.map((contact, index) => (
+              <Card
+                key={contact.label}
+                className="glass-effect p-8 border-0 hover:bg-white/5 transition-all duration-500 group"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
                 {contact.link ? (
                   <a
                     href={contact.link}
                     target={contact.link.startsWith("http") ? "_blank" : undefined}
                     rel={contact.link.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="flex items-center gap-4"
+                    className="flex items-start gap-6"
                   >
-                    <div className="p-3 rounded-lg bg-primary/20 group-hover:bg-primary/30 transition-colors glow-effect">
-                      <contact.icon className="h-6 w-6 text-primary" />
-                    </div>
+                    <contact.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-500" />
                     <div className="flex-1">
-                      <p className="text-sm text-muted-foreground mb-1">{contact.label}</p>
-                      <p className="font-semibold group-hover:text-primary transition-colors">
+                      <p className="text-xs text-muted-foreground/50 mb-2 font-light tracking-wider uppercase">{contact.label}</p>
+                      <p className="text-lg font-light group-hover:text-primary transition-colors">
                         {contact.value}
                       </p>
                     </div>
                   </a>
                 ) : (
-                  <div className="flex items-center gap-4">
-                    <div className="p-3 rounded-lg bg-primary/20">
-                      <contact.icon className="h-6 w-6 text-primary" />
-                    </div>
+                  <div className="flex items-start gap-6">
+                    <contact.icon className="h-6 w-6 text-primary" />
                     <div className="flex-1">
-                      <p className="text-sm text-muted-foreground mb-1">{contact.label}</p>
-                      <p className="font-semibold">{contact.value}</p>
+                      <p className="text-xs text-muted-foreground/50 mb-2 font-light tracking-wider uppercase">{contact.label}</p>
+                      <p className="text-lg font-light">{contact.value}</p>
                     </div>
                   </div>
                 )}
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+              </Card>
+            ))}
+          </div>
 
-        <Card className="mt-12 bg-gradient-to-br from-primary/10 to-primary-glow/10 border-primary/30 animate-fade-in-up">
-          <CardContent className="p-8 text-center">
-            <h3 className="text-2xl font-bold mb-4">Ready to Work Together?</h3>
-            <p className="text-muted-foreground mb-6">
-              Looking for opportunities in software development, AI/ML projects, or internships.
-              Let's create something amazing together!
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+          <div className="text-center pt-12">
+            <div className="flex flex-wrap gap-6 justify-center">
               <Button
                 asChild
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg glow-effect"
+                className="glass-effect hover:bg-primary/20 text-foreground px-10 py-7 text-base font-light tracking-wide group transition-all duration-500"
               >
                 <a href="mailto:konisettiparinitha@gmail.com">
-                  <Mail className="mr-2 h-5 w-5" />
-                  Send Email
+                  <Mail className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform" />
+                  SEND EMAIL
                 </a>
               </Button>
               <Button
                 asChild
-                variant="outline"
-                className="px-8 py-6 text-lg border-primary/50 hover:bg-primary/10"
+                variant="ghost"
+                className="px-10 py-7 text-base font-light tracking-wide hover:bg-transparent group"
               >
                 <a
                   href="https://www.linkedin.com/in/konisetti-parinitha"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Linkedin className="mr-2 h-5 w-5" />
-                  Connect on LinkedIn
+                  <Linkedin className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform" />
+                  LINKEDIN
                 </a>
               </Button>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
       </div>
     </section>
   );

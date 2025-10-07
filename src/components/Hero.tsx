@@ -7,71 +7,81 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-[var(--gradient-hero)] opacity-50" />
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-primary/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-primary-glow/20 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
-      </div>
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background">
+      {/* Elegant blur orbs */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary blur-orb animate-float-slow" />
+      <div className="absolute bottom-1/3 right-1/4 w-[600px] h-[600px] bg-secondary blur-orb animate-float-slow" style={{ animationDelay: "2s" }} />
+      <div className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-primary/60 blur-orb animate-glow-pulse" style={{ animationDelay: "1s" }} />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-7xl font-bold">
-              Hi, I'm <span className="text-gradient">Konisetti Parinitha</span>
+        <div className="max-w-5xl mx-auto space-y-12 animate-reveal">
+          <div className="space-y-6">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-light tracking-tight leading-none">
+              KONISETTI<br />
+              <span className="font-extralight">PARINITHA</span>
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground">
+            <div className="h-px w-24 bg-primary" />
+            <p className="text-xl md:text-2xl text-muted-foreground font-light tracking-wide">
               B.Tech Student | AI & ML Enthusiast | Software Developer
             </p>
           </div>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-lg text-muted-foreground/80 max-w-2xl font-light leading-relaxed">
             Passionate about creating innovative solutions with Artificial Intelligence and Machine Learning. 
             Currently pursuing Computer Science Engineering at Sri Vasavi Engineering College.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center items-center">
+          <div className="flex flex-wrap gap-6 items-center pt-4">
             <Button
               onClick={() => scrollToSection("contact")}
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg glow-effect"
+              className="glass-effect hover:bg-primary/20 text-foreground px-10 py-7 text-base font-light tracking-wide group transition-all duration-500"
             >
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
+              <Mail className="mr-3 h-5 w-5 group-hover:scale-110 transition-transform" />
+              GET IN TOUCH
             </Button>
             <Button
-              variant="outline"
+              variant="ghost"
               onClick={() => scrollToSection("about")}
-              className="px-8 py-6 text-lg border-primary/50 hover:bg-primary/10"
+              className="px-10 py-7 text-base font-light tracking-wide hover:bg-transparent group"
             >
-              Learn More
-              <ArrowDown className="ml-2 h-5 w-5 animate-bounce" />
+              <span className="flex items-center gap-3">
+                EXPLORE
+                <ArrowDown className="h-5 w-5 group-hover:translate-y-1 transition-transform" />
+              </span>
             </Button>
           </div>
 
-          <div className="flex gap-6 justify-center pt-8">
+          <div className="flex gap-8 pt-12">
             <a
               href="https://www.linkedin.com/in/konisetti-parinitha"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-full bg-card hover:bg-primary/20 transition-all hover:scale-110 hover:glow-effect"
+              className="glass-effect p-4 hover:bg-primary/10 transition-all duration-500 hover:scale-110 group"
             >
-              <Linkedin className="h-6 w-6" />
+              <Linkedin className="h-5 w-5 group-hover:text-primary transition-colors" />
             </a>
             <a
               href="mailto:konisettiparinitha@gmail.com"
-              className="p-3 rounded-full bg-card hover:bg-primary/20 transition-all hover:scale-110 hover:glow-effect"
+              className="glass-effect p-4 hover:bg-primary/10 transition-all duration-500 hover:scale-110 group"
             >
-              <Mail className="h-6 w-6" />
+              <Mail className="h-5 w-5 group-hover:text-primary transition-colors" />
             </a>
             <a
               href="tel:+918919358544"
-              className="p-3 rounded-full bg-card hover:bg-primary/20 transition-all hover:scale-110 hover:glow-effect"
+              className="glass-effect p-4 hover:bg-primary/10 transition-all duration-500 hover:scale-110 group"
             >
-              <Phone className="h-6 w-6" />
+              <Phone className="h-5 w-5 group-hover:text-primary transition-colors" />
             </a>
           </div>
         </div>
+      </div>
+
+      {/* Bottom info */}
+      <div className="absolute bottom-8 left-8 text-sm text-muted-foreground/60 font-light tracking-wide">
+        PORTFOLIO 2025
+      </div>
+      <div className="absolute bottom-8 right-8 text-sm text-muted-foreground/60 font-light tracking-wide">
+        konisettiparinitha@gmail.com
       </div>
     </section>
   );

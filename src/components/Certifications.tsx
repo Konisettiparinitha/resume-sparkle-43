@@ -26,80 +26,77 @@ const Certifications = () => {
   };
 
   return (
-    <section id="certifications" className="py-20 px-4 bg-card/30">
-      <div className="container mx-auto max-w-6xl">
-        <div className="text-center space-y-4 mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-bold">
-            Certifications & <span className="text-gradient">Achievements</span>
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-primary to-primary-glow mx-auto rounded-full" />
-        </div>
-
-        {/* Internship Highlight */}
-        <Card className="mb-12 bg-gradient-to-br from-primary/10 to-primary-glow/10 border-primary/30 animate-scale-in">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="p-4 rounded-xl bg-primary/20 glow-effect">
-                <Briefcase className="h-8 w-8 text-primary" />
-              </div>
-              <div className="flex-1">
-                <Badge className="mb-3 bg-primary/20 text-primary border-primary/30">
-                  {internship.type}
-                </Badge>
-                <h3 className="text-2xl font-bold mb-2">{internship.company}</h3>
-                <p className="text-lg text-muted-foreground">{internship.role}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Certifications */}
-          <div className="animate-slide-in-left">
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Award className="h-6 w-6 text-primary" />
-              Certifications
-            </h3>
-            <div className="space-y-4">
-              {certifications.map((cert, index) => (
-                <Card
-                  key={index}
-                  className="bg-card/50 backdrop-blur border-primary/20 hover:border-primary/50 transition-all hover:translate-x-2 group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-4 flex items-start gap-3">
-                    <div className="mt-1 p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <Award className="h-4 w-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed flex-1">{cert}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+    <section id="certifications" className="py-32 relative overflow-hidden bg-background">
+      {/* Background blur orbs */}
+      <div className="absolute top-1/3 left-1/3 w-[500px] h-[500px] bg-primary/20 blur-orb animate-float-slow" />
+      
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto space-y-20 animate-fade-in">
+          <div className="space-y-6">
+            <h2 className="text-5xl md:text-7xl font-light tracking-tight">CERTIFICATIONS</h2>
+            <div className="h-px w-32 bg-primary" />
           </div>
 
-          {/* Achievements */}
-          <div className="animate-slide-in-right">
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-              <Trophy className="h-6 w-6 text-primary" />
-              Achievements
-            </h3>
-            <div className="space-y-4">
-              {achievements.map((achievement, index) => (
-                <Card
-                  key={index}
-                  className="bg-card/50 backdrop-blur border-primary/20 hover:border-primary/50 transition-all hover:translate-x-2 group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <CardContent className="p-4 flex items-start gap-3">
-                    <div className="mt-1 p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <Trophy className="h-4 w-4 text-primary" />
-                    </div>
-                    <p className="text-sm leading-relaxed flex-1">{achievement}</p>
-                  </CardContent>
-                </Card>
-              ))}
+          {/* Internship Highlight */}
+          <Card className="glass-effect p-12 border-0 hover:bg-white/5 transition-all duration-500 group">
+            <div className="flex items-start gap-8">
+              <Briefcase className="h-8 w-8 text-primary group-hover:scale-110 transition-transform duration-500" />
+              <div className="flex-1">
+                <span className="glass-effect px-4 py-1 text-xs font-light tracking-wider text-primary mb-4 inline-block">
+                  INTERNSHIP
+                </span>
+                <h3 className="text-3xl font-light tracking-wide mb-2">{internship.company}</h3>
+                <p className="text-lg text-muted-foreground/70 font-light">{internship.role}</p>
+              </div>
             </div>
+          </Card>
+
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* Certifications */}
+            <Card className="glass-effect p-12 border-0 hover:bg-white/5 transition-all duration-500 group">
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-px w-12 bg-primary group-hover:w-20 transition-all duration-500" />
+                  <Award className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-3xl font-light tracking-wide">Certifications</h3>
+                <div className="space-y-4">
+                  {certifications.map((cert, index) => (
+                    <div key={index} className="flex items-start gap-4 group/item hover:translate-x-2 transition-transform duration-300">
+                      <div className="mt-1 text-xs text-muted-foreground/50 font-light min-w-[24px]">
+                        {String(index + 1).padStart(2, '0')}
+                      </div>
+                      <p className="text-sm font-light leading-relaxed text-muted-foreground/70 group-hover/item:text-foreground transition-colors">
+                        {cert}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
+
+            {/* Achievements */}
+            <Card className="glass-effect p-12 border-0 hover:bg-white/5 transition-all duration-500 group">
+              <div className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <div className="h-px w-12 bg-primary group-hover:w-20 transition-all duration-500" />
+                  <Trophy className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-3xl font-light tracking-wide">Achievements</h3>
+                <div className="space-y-4">
+                  {achievements.map((achievement, index) => (
+                    <div key={index} className="flex items-start gap-4 group/item hover:translate-x-2 transition-transform duration-300">
+                      <div className="mt-1 text-xs text-muted-foreground/50 font-light min-w-[24px]">
+                        {String(index + 1).padStart(2, '0')}
+                      </div>
+                      <p className="text-sm font-light leading-relaxed text-muted-foreground/70 group-hover/item:text-foreground transition-colors">
+                        {achievement}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
           </div>
         </div>
       </div>
